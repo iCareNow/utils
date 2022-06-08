@@ -14,6 +14,13 @@ CREATE TABLE patient(
     name varchar[300],
     insured bool,
 )
+
+Drop table if exists user;
+CREATE TABLE user(
+    Uid integer,
+    name varchar[300],
+)
+
 Insert into patient Values (0,"Radu Baciu", true),
                             (1,"batman",false),
                             (2,"Andrei", true),
