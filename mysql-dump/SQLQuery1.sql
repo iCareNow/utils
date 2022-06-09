@@ -1,33 +1,29 @@
 CREATE database iCareNow;
 
-
 USE iCareNow;
 
-DROP TABLE IF EXISTS rol
-CREATE TABLE rol(
-	RolID	integer	not null identity primary key,
-	name varchar(20),
+DROP TABLE IF EXISTS icn_role
+CREATE TABLE icn_role(
+	icn_role_id	integer	not null identity primary key,
+	icn_role_name varchar(20),
 	)
 
-INSERT INTO rol VALUES ('administrator'),('doctor'),('patient')
-
-DROP TABLE IF EXISTS uzer;
-CREATE TABLE uzer(
-	UzerID integer not null identity primary key,
-	name varchar(20),
+DROP TABLE IF EXISTS icn_user;
+CREATE TABLE icn_user(
+	icn_user_id integer not null identity primary key,
+	icn_user_name varchar(20),
 )
 
-
-INSERT INTO uzer VALUES ('Andrei Mladin'),('Radu Baciu'),('Adi Libenciuc'),('Florentina Mirisan'),('Alina Sastras')
-
-
-
-DROP TABLE IF EXISTS uzer_rol
-CREATE TABLE uzer_rol(
-	UzerID integer not null,
-	RolID integer not null,
-	FOREIGN KEY (UzerID) REFERENCES Uzer(UzerID),
-	FOREIGN KEY (RolID) REFERENCES Rol(RolID),
+DROP TABLE IF EXISTS user_role
+CREATE TABLE user_role(
+	icn_user_id integer not null,
+	icn_role_id integer not null,
+	FOREIGN KEY (icn_user_id) REFERENCES icn_user(icn_user_id),
+	FOREIGN KEY (icn_role_id) REFERENCES icn_role(icn_role_id),
 	)
 
-INSERT INTO uzer_rol VALUES (1,1),(1,2),(1,3),(1,3),(1,3)
+
+
+INSERT INTO icn_role VALUES ('administrator'),('doctor'),('patient')
+INSERT INTO icn_user VALUES ('Andrei Mladin'),('Radu Baciu'),('Adi Libenciuc'),('Florentina Mirisan'),('Alina Sastras')
+INSERT INTO user_role VALUES (1,1),(1,2),(1,3),(1,3),(1,3)
